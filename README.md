@@ -14,27 +14,26 @@ Booking and quoting platform for an Italian ice cream catering business. Built w
 
 ## Getting Started
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Copy the example env file and fill in your values:
+1. Copy the example env file and fill in your values:
    ```bash
    cp .env.example .env.local
    ```
 
-3. Generate the Prisma client:
+2. Start the dev server - the script handles installing dependencies and generating the Prisma client automatically if `node_modules` is missing:
    ```bash
-   npm run prisma:generate
+   bash start.sh
    ```
 
-4. Start the development server:
+   Or manually:
    ```bash
+   npm install
+   npm run prisma:generate
    npm run dev
    ```
 
 The app runs at `http://localhost:3000`.
+
+You can delete `node_modules` at any time to free disk space. Run `bash start.sh` again to reinstall.
 
 ## Scripts
 
