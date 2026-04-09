@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PUBLIC
+  EDITOR
+  ADMIN
+}
+
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  QUOTED
+  BOOKED
+  LOST
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  DEPOSIT_PAID
+  PAID
+  REFUNDED
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  role          Role     @default(PUBLIC)
+  passwordHash  String   @map("password_hash")
+  createdAt     DateTime @default(now()) @map("created_at")
+  auditLogs     AuditLog[]
+}
+
+model Page {
+  id             String      @id @default(cuid())
+  slug           String      @unique
+  title          String
+  seoTitle       String?     @map("seo_title")
+  seoDescription String?     @map("seo_description")
+  status         PageStatus  @default(DRAFT)
+  sections       Section[]
+}
+
+model Section {
+  id        String  @id @default(cuid())
+  pageId    String  @map("page_id")
+  type      String
+  sortOrder Int     @map("sort_order")
+  content   Json    @map("content_json")
+  page      Page    @relation(fields: [pageId], references: [id], onDelete: Cascade)
+}
+
+model Flavor {
+  id           String  @id @default(cuid())
+  name         String
+  description  String
+  allergens    String[]
+  imageUrl     String  @map("image_url")
+  seasonalFlag Boolean @default(false) @map("seasonal_flag")
+  active       Boolean @default(true)
+}
+
+model Package {
+  id              String         @id @default(cuid())
+  name            String
+  audienceType    String         @map("audience_type")
+  description     String
+  basePrice       Decimal        @db.Decimal(10, 2) @map("base_price")
+  durationMinutes Int            @map("duration_minutes")
+  minGuests       Int            @map("min_guests")
+  maxGuests       Int            @map("max_guests")
+  active          Boolean        @default(true)
+  quoteRequests   QuoteRequest[]
+  bookings        Booking[]
+}
+
+model AddOn {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  priceType   String  @map("price_type")
+  priceValue  Decimal @db.Decimal(10, 2) @map("price_value")
+  active      Boolean @default(true)
+}
+
+model ServiceArea {
+  id          String   @id @default(cuid())
+  name        String
+  postalCodes String[] @map("postal_codes")
+  travelFee   Decimal  @db.Decimal(10, 2) @map("travel_fee")
+}
+
+model SeasonalOffering {
+  id          String  @id @default(cuid())
+  name        String
+  season      String
+  description String
+  active      Boolean @default(true)
+}
+
+model Testimonial {
+  id          String  @id @default(cuid())
+  author      String
+  companyName String? @map("company_name")
+  rating      Int
+  quote       String
+  imageUrl    String? @map("image_url")
+  featured    Boolean @default(false)
+}
+
+model GalleryAsset {
+  id        String @id @default(cuid())
+  category  String
+  imageUrl  String @map("image_url")
+  altText   String @map("alt_text")
+  sortOrder Int    @map("sort_order")
+}
+
+model Lead {
+  id          String         @id @default(cuid())
+  source      String
+  customerType String        @map("customer_type")
+  name        String
+  company     String?
+  email       String
+  phone       String?
+  eventDate   DateTime?      @map("event_date")
+  location    String?
+  guestCount  Int?           @map("guest_count")
+  message     String?
+  status      LeadStatus     @default(NEW)
+  quoteRequests QuoteRequest[]
+  bookings    Booking[]
+  reviews     Review[]
+}
+
+model QuoteRequest {
+  id             String   @id @default(cuid())
+  leadId         String   @map("lead_id")
+  packageId      String   @map("package_id")
+  estimatedPrice Decimal  @db.Decimal(10, 2) @map("estimated_price")
+  selections     Json     @map("selections_json")
+  status         String
+  lead           Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  package        Package  @relation(fields: [packageId], references: [id])
+}
+
+model Booking {
+  id              String        @id @default(cuid())
+  leadId          String        @map("lead_id")
+  packageId       String        @map("package_id")
+  scheduledAt     DateTime      @map("scheduled_at")
+  durationMinutes Int           @map("duration_minutes")
+  status          BookingStatus @default(PENDING)
+  paymentStatus   PaymentStatus @default(UNPAID) @map("payment_status")
+  notes           String?
+  lead            Lead          @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  package         Package       @relation(fields: [packageId], references: [id])
+}
+
+model Review {
+  id       String @id @default(cuid())
+  leadId   String @map("lead_id")
+  rating   Int
+  comment  String
+  approved Boolean @default(false)
+  lead     Lead   @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}
+
+model JobOpening {
+  id          String @id @default(cuid())
+  title       String
+  description String
+  location    String
+  status      String
+}
+
+model FAQ {
+  id        String @id @default(cuid())
+  category  String
+  question  String
+  answer    String
+  sortOrder Int    @map("sort_order")
+}
+
+model EventTracking {
+  id        String   @id @default(cuid())
+  sessionId String   @map("session_id")
+  eventName String   @map("event_name")
+  payload   Json     @map("payload_json")
+  createdAt DateTime @default(now()) @map("created_at")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?  @map("user_id")
+  action      String
+  entityType  String   @map("entity_type")
+  entityId    String   @map("entity_id")
+  payload     Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User?    @relation(fields: [userId], references: [id])
+}

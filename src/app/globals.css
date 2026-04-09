@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #35513a;
+  --vanilla: #fffaf2;
+  --warm-white: #fffdf8;
+  --paper: #f9f0de;
+  --paper-strong: #ecdab9;
+  --butter: #d6b56a;
+  --sand: #efe0c3;
+  --slate: #645845;
+  --line: #d5c0a0;
+  --line-strong: #a48457;
+  --coral: #b14f3d;
+  --mint: #cbd9b8;
+  --berry: #7b2f2c;
+  --peach: #f6e3cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(177, 79, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, #f7ecd9 0%, #fffaf3 30%, #f2e3c7 100%);
+  color: var(--navy);
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.font-heading {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.hero-surface {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.95), rgba(248, 235, 210, 0.92)),
+    radial-gradient(circle at 20% 20%, rgba(177, 79, 61, 0.14), transparent 32%);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-accent,
+.btn-toggle,
+.btn-toggle-active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.btn-primary {
+  background: var(--coral);
+  color: var(--warm-white);
+  border: 1px solid var(--coral);
+  box-shadow: 0 14px 30px rgba(92, 47, 27, 0.12);
+}
+
+.btn-primary:hover {
+  background: #9f4434;
+  border-color: #9f4434;
+}
+
+.btn-secondary {
+  background: var(--warm-white);
+  color: var(--navy);
+  border: 1px solid var(--line-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--paper);
+}
+
+.btn-accent {
+  background: var(--navy);
+  color: var(--warm-white);
+  border: 1px solid var(--navy);
+}
+
+.btn-accent:hover {
+  background: #2d4431;
+  border-color: #2d4431;
+}
+
+.btn-toggle,
+.btn-toggle-active {
+  min-width: 2.75rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.btn-toggle {
+  background: transparent;
+  color: var(--slate);
+  border: 1px solid transparent;
+}
+
+.btn-toggle:hover {
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.btn-toggle-active {
+  background: var(--coral);
+  color: var(--warm-white);
+  border: 1px solid var(--coral);
+}
