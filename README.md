@@ -20,12 +20,12 @@ Booking and quoting platform for an Italian ice cream catering business. Built w
    ```
 
 2. Start the dev server - the script handles installing dependencies and generating the Prisma client automatically if `node_modules` is missing:
-   ```bash
-   bash start.sh
+   ```powershell
+   .\start.ps1
    ```
 
    Or manually:
-   ```bash
+   ```powershell
    npm install
    npm run prisma:generate
    npm run dev
@@ -33,7 +33,7 @@ Booking and quoting platform for an Italian ice cream catering business. Built w
 
 The app runs at `http://localhost:3000`.
 
-You can delete `node_modules` at any time to free disk space. Run `bash start.sh` again to reinstall.
+You can delete `node_modules` at any time to free disk space. Run `.\start.ps1` again to reinstall.
 
 ## Scripts
 

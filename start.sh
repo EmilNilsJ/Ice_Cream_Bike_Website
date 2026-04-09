@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -d "node_modules" ]; then
+if [ ! -f "node_modules/.package-lock.json" ]; then
   echo "Installing dependencies..."
   npm install
   echo "Generating Prisma client..."
