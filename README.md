@@ -33,7 +33,10 @@ Booking and quoting platform for an Italian ice cream catering business. Built w
 
 The app runs at `http://localhost:3000`.
 
-You can delete `node_modules` at any time to free disk space. Run `.\start.ps1` again to reinstall.
+You can delete `node_modules` at any time to free disk space. Run `.\start.ps1` again to reinstall:
+```powershell
+Remove-Item -Recurse -Force node_modules; .\start.ps1
+```
 
 ## Scripts
 
