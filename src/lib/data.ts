@@ -49,28 +49,28 @@ export const flavors: Flavor[] = [
     name: "Cloudberry Vanilla",
     description: "Creamy vanilla folded with bright cloudberry ribbons for weddings and premium receptions.",
     allergens: ["Milk"],
-    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+    image: "/IceCreamLogo.png",
     audience: ["company", "family"]
   },
   {
     name: "Bubblegum Swirl",
     description: "A loud, colorful favorite designed to make children point at the menu before they can read it.",
     allergens: ["Milk"],
-    image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=80",
+    image: "/IceCreamLogo.png",
     audience: ["family"]
   },
   {
     name: "Salted Caramel Pretzel",
     description: "Balanced sweetness with a little crunch, built for company launches and evening events.",
     allergens: ["Milk", "Gluten"],
-    image: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=80",
+    image: "/IceCreamLogo.png",
     audience: ["company"]
   },
   {
     name: "Winter Cinnamon Cookie",
     description: "A winter edition flavor for Christmas markets, office celebrations, and cold-weather pop-ups.",
     allergens: ["Milk", "Gluten"],
-    image: "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=900&q=80",
+    image: "/IceCreamLogo.png",
     seasonal: true,
     audience: ["company", "family"]
   }

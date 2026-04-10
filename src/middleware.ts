@@ -12,18 +12,22 @@ export function middleware(request: NextRequest) {
     "Content-Security-Policy",
     [
       "default-src 'self'",
-      "img-src 'self' https://images.unsplash.com https://res.cloudinary.com data:",
+      "img-src 'self' https://images.unsplash.com https://res.cloudinary.com https://cdn.sanity.io data: blob:",
       "style-src 'self' 'unsafe-inline'",
-      "script-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self'",
+      "connect-src 'self' https://*.sanity.io wss://*.sanity.io",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'"
     ].join("; ")
   );
 
-  if (request.nextUrl.pathname.startsWith("/admin") && request.headers.get("x-demo-role") === null) {
+  if (
+    request.nextUrl.pathname.startsWith("/admin") &&
+    !request.nextUrl.pathname.startsWith("/studio") &&
+    request.headers.get("x-demo-role") === null
+  ) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     url.searchParams.set("admin", "requires-session");

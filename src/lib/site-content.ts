@@ -171,28 +171,28 @@ const siteContent = {
           name: "Cloudberry Vanilla",
           description: "Romige vanille met heldere cloudberry-tonen, geliefd op bruiloften en verfijnde recepties.",
           allergens: ["Melk"],
-          image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company", "family"]
         },
         {
           name: "Bubblegum Swirl",
           description: "Een kleurrijke favoriet die kinderen meteen aanwijzen zodra ze de menukaart zien.",
           allergens: ["Melk"],
-          image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["family"]
         },
         {
           name: "Salted Caramel Pretzel",
           description: "Zoet, vol en licht crunchy; een sterke keuze voor bedrijfslanceringen en avondfeesten.",
           allergens: ["Melk", "Gluten"],
-          image: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company"]
         },
         {
           name: "Winter Cinnamon Cookie",
           description: "Een warme wintersmaak voor kerstmarkten, decemberfeesten en seizoenspop-ups.",
           allergens: ["Melk", "Gluten"],
-          image: "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company", "family"],
           seasonal: true
         }
@@ -555,28 +555,28 @@ const siteContent = {
           name: "Cloudberry Vanilla",
           description: "Creamy vanilla with bright cloudberry notes, popular for weddings and refined receptions.",
           allergens: ["Milk"],
-          image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company", "family"]
         },
         {
           name: "Bubblegum Swirl",
           description: "A colorful favorite that children point to as soon as they spot the menu.",
           allergens: ["Milk"],
-          image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["family"]
         },
         {
           name: "Salted Caramel Pretzel",
           description: "Sweet, rich, and lightly crunchy; a strong fit for launches and evening events.",
           allergens: ["Milk", "Gluten"],
-          image: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company"]
         },
         {
           name: "Winter Cinnamon Cookie",
           description: "A warmer seasonal flavor for Christmas markets, December parties, and winter pop-ups.",
           allergens: ["Milk", "Gluten"],
-          image: "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=900&q=80",
+          image: "/IceCreamLogo.png",
           audience: ["company", "family"],
           seasonal: true
         }
