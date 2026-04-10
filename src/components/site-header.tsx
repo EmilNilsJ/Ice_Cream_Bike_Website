@@ -2,7 +2,6 @@ import type { Route } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { MobileMenu } from "@/components/mobile-menu";
 import type { Locale } from "@/lib/locale";
 
 type SiteHeaderProps = {
@@ -23,7 +22,7 @@ type SiteHeaderProps = {
 export function SiteHeader({ locale, navigation, brand, ui }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:var(--paper)]/92 backdrop-blur-xl">
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-3 leading-none text-[color:var(--navy)]">
           <Image src="/IceCreamLogo.png" alt="The Ice Cream Bike logo" width={40} height={40} className="rounded-full object-cover" />
           <div>
@@ -44,10 +43,9 @@ export function SiteHeader({ locale, navigation, brand, ui }: SiteHeaderProps) {
         </nav>
         <div className="flex items-center gap-3">
           <LanguageSwitcher locale={locale} label={ui.languageLabel} dutchLabel={ui.dutch} englishLabel={ui.english} />
-          <Link href={"/booking" as Route} className="btn-primary hidden px-5 py-2 text-sm md:inline-flex">
+          <Link href={"/booking" as Route} className="btn-primary px-5 py-2 text-sm">
             {ui.bookingCta}
           </Link>
-          <MobileMenu navigation={navigation} bookingCta={ui.bookingCta} />
         </div>
       </div>
     </header>
