@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { assertRateLimit, getRequestFingerprint } from "@/lib/security";
 import { contactSchema } from "@/lib/validation";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   try {
@@ -9,10 +10,19 @@ export async function POST(request: Request) {
 
     const payload = contactSchema.parse(await request.json());
 
+    const { error } = await supabase.from("contact_messages").insert({
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone ?? null,
+      company: payload.company ?? null,
+      message: payload.message
+    });
+
+    if (error) throw new Error(error.message);
+
     return NextResponse.json({
       ok: true,
-      message: "Inquiry accepted.",
-      payload
+      message: "Inquiry accepted."
     });
   } catch (error) {
     return NextResponse.json(
