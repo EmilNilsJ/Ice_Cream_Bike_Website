@@ -80,6 +80,36 @@ export async function getTestimonials() {
 }
 
 /*
+ * Fetch active job openings from Sanity.
+ */
+export type JobOpening = {
+  titleEn: string;
+  titleNl: string;
+  employmentType: string;
+  location: string | null;
+  descriptionEn: string;
+  descriptionNl: string;
+  requirementsEn: string | null;
+  requirementsNl: string | null;
+  applyEmail: string | null;
+};
+
+export async function getJobOpenings(): Promise<JobOpening[]> {
+  if (!isSanityConfigured()) return [];
+
+  const data: JobOpening[] = await sanityClient.fetch(
+    `*[_type == "jobOpening" && active != false] | order(order asc) {
+      titleEn, titleNl, employmentType, location,
+      descriptionEn, descriptionNl,
+      requirementsEn, requirementsNl,
+      applyEmail
+    }`
+  );
+
+  return data ?? [];
+}
+
+/*
  * Fetch singleton site settings from Sanity.
  */
 export async function getSiteSettings(): Promise<SanitySettings> {
