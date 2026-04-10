@@ -1,11 +1,13 @@
-import { sanityClient, isSanityConfigured } from "./client";
+import { sanityClient, isSanityConfigured, urlFor } from "./client";
 import { flavors, testimonials } from "@/lib/data";
 import type { Flavor } from "@/lib/data";
+import type { Locale } from "@/lib/locale";
 
 type SanityFlavor = {
   _id: string;
   name: string;
-  description: string;
+  descriptionEn: string;
+  descriptionNl: string;
   allergens: string[];
   audience: ("company" | "family")[];
   seasonal: boolean;
@@ -35,12 +37,12 @@ type SanitySettings = {
  * Fetch flavors from Sanity, falling back to static data if Sanity is not configured
  * or returns no results.
  */
-export async function getFlavors(): Promise<Flavor[]> {
+export async function getFlavors(locale: Locale = "en"): Promise<Flavor[]> {
   if (!isSanityConfigured()) return flavors;
 
   const data: SanityFlavor[] = await sanityClient.fetch(
     `*[_type == "flavor" && active != false] | order(order asc) {
-      _id, name, description, allergens, audience, seasonal, image
+      _id, name, descriptionEn, descriptionNl, allergens, audience, seasonal, image
     }`
   );
 
@@ -48,13 +50,11 @@ export async function getFlavors(): Promise<Flavor[]> {
 
   return data.map((f) => ({
     name: f.name,
-    description: f.description,
+    description: locale === "nl" ? (f.descriptionNl || f.descriptionEn) : (f.descriptionEn || f.descriptionNl),
     allergens: f.allergens ?? [],
     audience: f.audience ?? ["company", "family"],
     seasonal: f.seasonal ?? false,
-    image: f.image
-      ? `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${f.image.asset._ref.replace("image-", "").replace(/-(\w+)$/, ".$1")}`
-      : "/IceCreamLogo.png"
+    image: f.image ? urlFor(f.image).width(900).url() : "/IceCreamLogo.png"
   }));
 }
 

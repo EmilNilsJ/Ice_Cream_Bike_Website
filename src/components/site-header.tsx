@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import type { Locale } from "@/lib/locale";
 
@@ -22,13 +23,16 @@ export function SiteHeader({ locale, navigation, brand, ui }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:var(--paper)]/92 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="leading-none text-[color:var(--navy)]">
-          <span className="font-heading block text-lg font-semibold tracking-tight">
-            {brand.name}
-          </span>
-          <span className="mt-1 block text-[10px] uppercase tracking-[0.32em] text-[color:var(--slate)]">
-            {brand.tagline}
-          </span>
+        <Link href="/" className="flex items-center gap-3 leading-none text-[color:var(--navy)]">
+          <Image src="/IceCreamLogo.png" alt="The Ice Cream Bike logo" width={40} height={40} className="rounded-full object-cover" />
+          <div>
+            <span className="font-heading block text-lg font-semibold tracking-tight">
+              {brand.name}
+            </span>
+            <span className="mt-1 block text-[10px] uppercase tracking-[0.32em] text-[color:var(--slate)]">
+              {brand.tagline}
+            </span>
+          </div>
         </Link>
         <nav className="hidden gap-6 md:flex">
           {navigation.map((item) => (

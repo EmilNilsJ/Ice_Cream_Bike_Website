@@ -3,22 +3,23 @@
 import Image from "next/image";
 import { useState } from "react";
 import clsx from "clsx";
-import type { Audience } from "@/lib/data";
+import type { Audience, Flavor } from "@/lib/data";
 import { getSiteContent } from "@/lib/site-content";
 import type { Locale } from "@/lib/locale";
 
 type FlavorExplorerProps = {
   locale: Locale;
+  flavors: Flavor[];
 };
 
-export function FlavorExplorer({ locale }: FlavorExplorerProps) {
+export function FlavorExplorer({ locale, flavors }: FlavorExplorerProps) {
   const content = getSiteContent(locale).flavors;
   const [activeFilter, setActiveFilter] = useState<Audience | "all">("all");
 
   const filteredFlavors =
     activeFilter === "all"
-      ? content.items
-      : content.items.filter((flavor) => (flavor.audience as readonly Audience[]).includes(activeFilter));
+      ? flavors
+      : flavors.filter((flavor) => (flavor.audience as readonly Audience[]).includes(activeFilter));
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-24">
@@ -52,7 +53,7 @@ export function FlavorExplorer({ locale }: FlavorExplorerProps) {
                     {content.audiences[audience]}
                   </span>
                 ))}
-                {"seasonal" in flavor && flavor.seasonal ? (
+                {flavor.seasonal ? (
                   <span className="rounded-full bg-[color:var(--mint)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[color:var(--navy)]">
                     {content.seasonal}
                   </span>

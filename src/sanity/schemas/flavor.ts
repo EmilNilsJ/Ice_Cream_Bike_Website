@@ -12,8 +12,15 @@ export const flavorSchema = defineType({
       validation: (r) => r.required()
     }),
     defineField({
-      name: "description",
-      title: "Description",
+      name: "descriptionEn",
+      title: "Description (English)",
+      type: "text",
+      rows: 3,
+      validation: (r) => r.required()
+    }),
+    defineField({
+      name: "descriptionNl",
+      title: "Description (Dutch)",
       type: "text",
       rows: 3,
       validation: (r) => r.required()

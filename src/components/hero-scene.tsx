@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getSiteContent } from "@/lib/site-content";
 import type { Locale } from "@/lib/locale";
@@ -18,9 +19,18 @@ export function HeroScene({ locale }: HeroSceneProps) {
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="relative z-10">
           <p className="text-xs uppercase tracking-[0.35em] text-[color:var(--coral)]">{content.eyebrow}</p>
-          <h1 className="font-heading mt-6 max-w-4xl text-5xl font-semibold leading-none tracking-tight text-[color:var(--navy)] md:text-7xl">
-            {content.title}
-          </h1>
+          <div className="mt-6 flex items-start gap-6">
+            <Image
+              src="/IceCreamLogo.png"
+              alt="The Ice Cream Bike"
+              width={96}
+              height={96}
+              className="hidden shrink-0 rounded-2xl object-cover shadow-[0_8px_24px_rgba(79,59,40,0.18)] md:block"
+            />
+            <h1 className="font-heading max-w-4xl text-5xl font-semibold leading-none tracking-tight text-[color:var(--navy)] md:text-7xl">
+              {content.title}
+            </h1>
+          </div>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--slate)]">
             {content.description}
           </p>
