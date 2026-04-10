@@ -65,7 +65,7 @@ export function PackageConfigurator({ locale }: PackageConfiguratorProps) {
           <div className="grid gap-6">
             <label className="grid gap-2">
               <span className="text-sm font-semibold text-[color:var(--navy)]">{planner.guestsLabel}</span>
-              <input type="range" min="10" max="500" value={guests} onChange={(event) => setGuests(Number(event.target.value))} />
+              <input type="range" min="10" max="500" step="5" value={guests} onChange={(event) => setGuests(Number(event.target.value))} />
               <span className="text-sm text-[color:var(--slate)]">{guests} {planner.guestsSuffix}</span>
             </label>
             <label className="grid gap-2">

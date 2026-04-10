@@ -4,7 +4,7 @@ const siteContent = {
   nl: {
     brand: {
       name: "The Ice Cream Bike",
-      tagline: "Elke dag iets zoets"
+      tagline: "A little sweet every day"
     },
     meta: {
       title: "The Ice Cream Bike | Ambachtelijke ijskar voor events",
@@ -401,7 +401,7 @@ const siteContent = {
       { href: "/ice-cream", label: "Ice Cream" },
       { href: "/booking", label: "Booking" },
       { href: "/reviews", label: "Reviews" },
-      { href: "/work-events", label: "Work Events" },
+      { href: "/work-events", label: "Business Events" },
       { href: "/hiring", label: "Hiring" },
       { href: "/contact", label: "Contact" }
     ],

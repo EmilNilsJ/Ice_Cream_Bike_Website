@@ -4,13 +4,19 @@ import { useEffect, useState } from "react";
 import { getSiteContent } from "@/lib/site-content";
 import type { Locale } from "@/lib/locale";
 
-type TestimonialCarouselProps = {
-  locale: Locale;
+type Testimonial = {
+  author: string;
+  role: string;
+  quote: string;
 };
 
-export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
+type TestimonialCarouselProps = {
+  locale: Locale;
+  testimonials: Testimonial[];
+};
+
+export function TestimonialCarousel({ locale, testimonials }: TestimonialCarouselProps) {
   const content = getSiteContent(locale);
-  const testimonials = content.testimonials;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -19,7 +25,7 @@ export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
     }, 4200);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
   const active = testimonials[index];
 
@@ -27,7 +33,7 @@ export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
     <section className="mx-auto max-w-5xl px-6 py-24">
       <div className="rounded-[40px] bg-[color:var(--navy)] p-10 text-[color:var(--vanilla)]">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--mint)]">{content.reviews.proofLabel}</p>
-        <p className="mt-6 text-3xl font-semibold leading-tight md:text-4xl">“{active.quote}”</p>
+        <p className="mt-6 text-3xl font-semibold leading-tight md:text-4xl">"{active.quote}"</p>
         <div className="mt-6 flex items-center justify-between gap-6">
           <div>
             <p className="font-semibold">{active.author}</p>

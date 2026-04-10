@@ -34,7 +34,7 @@ export function SiteHeader({ locale, navigation, brand, ui }: SiteHeaderProps) {
             </span>
           </div>
         </Link>
-        <nav className="hidden gap-6 md:flex">
+        <nav className="hidden gap-3 md:flex">
           {navigation.map((item) => (
             <Link key={item.href} href={item.href as Route} className="text-sm text-[color:var(--slate)] transition hover:text-[color:var(--navy)]">
               {item.label}
