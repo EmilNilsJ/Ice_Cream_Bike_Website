@@ -26,7 +26,8 @@ export function ContactForm({ locale }: ContactFormProps) {
       email: formData.get("email"),
       phone: formData.get("phone"),
       company: formData.get("company"),
-      message: formData.get("message")
+      message: formData.get("message"),
+      _hp: formData.get("_hp")
     };
 
     try {
@@ -52,6 +53,7 @@ export function ContactForm({ locale }: ContactFormProps) {
 
   return (
     <form action={handleSubmit} className="mt-12 grid gap-4 rounded-[36px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2 md:p-8">
+      <input name="_hp" type="text" tabIndex={-1} aria-hidden="true" autoComplete="off" className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0" />
       {(["name", "email", "phone", "company"] as const).map((field) => (
         <label key={field} className="grid gap-2">
           <span className="text-sm font-semibold text-[color:var(--navy)]">{content.fields[field]}</span>

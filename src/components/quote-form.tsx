@@ -34,7 +34,8 @@ export function QuoteForm({ locale }: QuoteFormProps) {
       packageId: formData.get("packageId"),
       durationMinutes: Number(formData.get("durationMinutes")),
       addOnIds: formData.getAll("addOnIds"),
-      message: formData.get("message")
+      message: formData.get("message"),
+      _hp: formData.get("_hp")
     };
 
     try {
@@ -60,6 +61,7 @@ export function QuoteForm({ locale }: QuoteFormProps) {
 
   return (
     <form action={handleSubmit} className="grid gap-4 rounded-[36px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2 md:p-8">
+      <input name="_hp" type="text" tabIndex={-1} aria-hidden="true" autoComplete="off" className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0" />
       <label className="grid gap-2">
         <span className="text-sm font-semibold text-[color:var(--navy)]">{content.quoteForm.customerType}</span>
         <select name="customerType" className="rounded-2xl border border-[color:var(--line)] px-4 py-3 outline-none">

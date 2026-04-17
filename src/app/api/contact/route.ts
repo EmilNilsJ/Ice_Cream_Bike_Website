@@ -8,7 +8,9 @@ export async function POST(request: Request) {
     const key = await getRequestFingerprint();
     await assertRateLimit(`contact:${key}`, 4, 60_000);
 
-    const payload = contactSchema.parse(await request.json());
+    const body = await request.json();
+    if (body._hp) return NextResponse.json({ ok: true, message: "Inquiry accepted." });
+    const payload = contactSchema.parse(body);
 
     const { error } = await supabase.from("contact_messages").insert({
       name: payload.name,

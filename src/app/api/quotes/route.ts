@@ -9,7 +9,9 @@ export async function POST(request: Request) {
     const key = await getRequestFingerprint();
     await assertRateLimit(`quote:${key}`, 5, 60_000);
 
-    const payload = quoteSchema.parse(await request.json());
+    const body = await request.json();
+    if (body._hp) return NextResponse.json({ ok: true, estimate: { total: 0, travelFee: 0 } });
+    const payload = quoteSchema.parse(body);
     const estimate = calculateQuote({
       packageId: payload.packageId,
       guests: payload.guests,

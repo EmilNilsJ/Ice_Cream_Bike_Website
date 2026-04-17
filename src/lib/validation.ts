@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+const URL_PATTERN = /https?:\/\/|www\./i;
+
+function noLinks(val: string | undefined) {
+  return !val || !URL_PATTERN.test(val);
+}
+
 export const quoteSchema = z.object({
   customerType: z.enum(["company", "family"]),
   name: z.string().min(2),
@@ -13,7 +19,8 @@ export const quoteSchema = z.object({
   packageId: z.string().min(2),
   durationMinutes: z.coerce.number().min(30),
   addOnIds: z.array(z.string()).default([]),
-  message: z.string().max(1200).optional()
+  message: z.string().max(1200).optional().refine(noLinks, { message: "Links are not allowed in messages." }),
+  _hp: z.string().max(0, "Submission rejected.").optional()
 });
 
 export const bookingSchema = quoteSchema.extend({
@@ -26,5 +33,6 @@ export const contactSchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   company: z.string().optional(),
-  message: z.string().min(10).max(1200)
+  message: z.string().min(10).max(1200).refine(noLinks, { message: "Links are not allowed in messages." }),
+  _hp: z.string().max(0, "Submission rejected.").optional()
 });
