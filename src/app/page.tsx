@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { HeroScene } from "@/components/hero-scene";
 import { SectionHeading } from "@/components/section-heading";
+import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { getLocale } from "@/lib/locale";
 import { getSiteContent } from "@/lib/site-content";
+import { getTestimonials } from "@/sanity/queries";
 
 export default async function HomePage() {
   const locale = await getLocale();
   const content = getSiteContent(locale);
+  const testimonials = await getTestimonials();
   const routeLabel = locale === "nl" ? "Snelle route" : "Quick route";
 
   return (
@@ -15,9 +18,9 @@ export default async function HomePage() {
         <HeroScene locale={locale} />
       </div>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-6 py-20 md:grid-cols-3">
+      <section className="mx-auto grid max-w-7xl gap-6 px-6 py-20 sm:grid-cols-2 md:grid-cols-3">
         {content.home.quickRoutes.map((item) => (
-          <article key={item.title} className="rounded-[32px] border border-[color:var(--line)] bg-[color:var(--paper)] p-8 shadow-[0_20px_60px_rgba(79,59,40,0.08)]">
+          <article key={item.title} className="rounded-[32px] border border-[color:var(--line)] bg-[color:var(--paper)] p-6 shadow-[0_20px_60px_rgba(79,59,40,0.08)] md:p-8">
             <p className="text-xs uppercase tracking-[0.28em] text-[color:var(--coral)]">{routeLabel}</p>
             <h2 className="font-heading mt-4 text-3xl font-semibold text-[color:var(--navy)]">{item.title}</h2>
             <p className="mt-4 text-[color:var(--slate)]">{item.text}</p>
@@ -31,9 +34,9 @@ export default async function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="grid gap-4 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
           {content.home.chips.map((item) => (
-            <div key={item} className="rounded-full border border-[color:var(--line)] bg-[color:var(--warm-white)] px-4 py-3 text-center text-sm text-[color:var(--navy)] shadow-[0_10px_25px_rgba(79,59,40,0.05)]">
+            <div key={item} className="min-w-0 break-words rounded-2xl border border-[color:var(--line)] bg-[color:var(--warm-white)] px-3 py-3 text-center text-[11px] leading-snug text-[color:var(--navy)] shadow-[0_10px_25px_rgba(79,59,40,0.05)] sm:px-4 sm:text-sm">
               {item}
             </div>
           ))}
@@ -71,9 +74,9 @@ export default async function HomePage() {
             title={content.home.trusted.title}
             description={content.home.trusted.description}
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
             {content.home.trusted.items.map((label) => (
-              <div key={label} className="font-heading rounded-[26px] border border-[color:var(--line)] bg-[color:var(--warm-white)] px-6 py-8 text-center text-2xl font-semibold text-[color:var(--navy)]">
+              <div key={label} className="font-heading min-w-0 break-words rounded-[26px] border border-[color:var(--line)] bg-[color:var(--warm-white)] px-3 py-6 text-center text-base font-semibold leading-snug text-[color:var(--navy)] sm:px-6 sm:py-8 sm:text-xl md:text-2xl">
                 {label}
               </div>
             ))}
@@ -81,11 +84,24 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {testimonials.length > 0 && (
+        <>
+          <section className="mx-auto max-w-7xl px-6 pb-2">
+            <SectionHeading
+              eyebrow={content.reviews.eyebrow}
+              title={content.reviews.title}
+              description={content.reviews.description}
+            />
+          </section>
+          <TestimonialCarousel locale={locale} testimonials={testimonials.slice(0, 4)} />
+        </>
+      )}
+
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="grid gap-8 rounded-[40px] border border-[color:var(--line)] bg-[linear-gradient(180deg,#fff8ef_0%,#f7e9d4_100%)] p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--coral)]">{content.home.cta.eyebrow}</p>
-            <h2 className="font-heading mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-[color:var(--navy)] md:text-5xl">
+            <h2 className="font-heading mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-[color:var(--navy)] sm:text-4xl md:text-5xl">
               {content.home.cta.title}
             </h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--slate)]">

@@ -13,7 +13,7 @@ export function CookieBanner({ content }: CookieBannerProps) {
         <p className="max-w-2xl text-sm text-[color:var(--slate)]">
           {content.message}
         </p>
-        <form action="/api/preferences/cookies" method="post" className="flex gap-3">
+        <form action="/api/preferences/cookies" method="post" className="flex flex-wrap gap-3">
           <button type="submit" name="consent" value="necessary" className="btn-secondary px-4 py-2 text-sm">
             {content.necessary}
           </button>

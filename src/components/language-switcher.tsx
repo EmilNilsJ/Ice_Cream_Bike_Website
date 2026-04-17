@@ -19,7 +19,7 @@ export function LanguageSwitcher({
       method="post"
       className="flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] px-2 py-2"
     >
-      <span className="px-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[color:var(--slate)]">
+      <span className="hidden px-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[color:var(--slate)] sm:inline">
         {label}
       </span>
       <button

@@ -20,7 +20,7 @@ export function HeroScene({ locale }: HeroSceneProps) {
         <div className="relative z-10">
           <p className="text-xs uppercase tracking-[0.35em] text-[color:var(--coral)]">{content.eyebrow}</p>
           <div className="mt-6">
-            <h1 className="font-heading max-w-4xl text-5xl font-semibold leading-none tracking-tight text-[color:var(--navy)] md:text-7xl">
+            <h1 className="font-heading max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-[color:var(--navy)] sm:text-5xl md:text-6xl lg:text-7xl">
               {content.title}
             </h1>
           </div>
@@ -35,17 +35,17 @@ export function HeroScene({ locale }: HeroSceneProps) {
               {content.secondaryCta}
             </Link>
           </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
+          <div className="mt-10 grid grid-cols-3 gap-3 md:gap-4">
             {content.metrics.map((metric, index) => (
               <motion.div
                 key={metric.label}
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 + index * 0.1 }}
-                className="rounded-[28px] border border-[color:var(--line)] bg-[color:var(--paper)] p-5 shadow-[0_20px_45px_rgba(79,59,40,0.08)]"
+                className="rounded-[24px] border border-[color:var(--line)] bg-[color:var(--paper)] p-3 shadow-[0_20px_45px_rgba(79,59,40,0.08)] sm:rounded-[28px] sm:p-5"
               >
-                <p className="text-2xl font-semibold text-[color:var(--navy)]">{metric.value}</p>
-                <p className="mt-2 text-sm text-[color:var(--slate)]">{metric.label}</p>
+                <p className="text-lg font-semibold text-[color:var(--navy)] sm:text-2xl">{metric.value}</p>
+                <p className="mt-1 text-xs text-[color:var(--slate)] sm:mt-2 sm:text-sm">{metric.label}</p>
               </motion.div>
             ))}
           </div>

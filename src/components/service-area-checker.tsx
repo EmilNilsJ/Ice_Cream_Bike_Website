@@ -16,7 +16,7 @@ export function ServiceAreaChecker() {
     <section className="mx-auto grid max-w-7xl gap-8 px-6 py-24 lg:grid-cols-[0.8fr_1fr]">
       <div>
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--coral)]">Regional rentals</p>
-        <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--navy)]">Check whether your event is inside the main service route.</h2>
+        <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[color:var(--navy)] sm:text-3xl md:text-4xl">Check whether your event is inside the main service route.</h2>
         <p className="mt-5 max-w-xl text-lg text-[color:var(--slate)]">
           Use this to see whether your event falls inside the main service area before you contact us. Travel details are discussed directly after contact.
         </p>

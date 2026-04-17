@@ -28,7 +28,7 @@ export function PackageConfigurator({ locale }: PackageConfiguratorProps) {
 
   return (
     <section className="mx-auto grid max-w-7xl gap-8 px-6 py-24 lg:grid-cols-[1fr_380px]">
-      <div className="rounded-[36px] bg-white p-8 shadow-[0_25px_80px_rgba(15,23,42,0.08)]">
+      <div className="rounded-[36px] bg-white p-5 shadow-[0_25px_80px_rgba(15,23,42,0.08)] md:p-8">
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <label className="text-sm font-semibold text-[color:var(--navy)]">{planner.packageLabel}</label>
@@ -113,7 +113,7 @@ export function PackageConfigurator({ locale }: PackageConfiguratorProps) {
           </div>
         </div>
       </div>
-      <aside className="rounded-[36px] bg-[color:var(--navy)] p-8 text-[color:var(--vanilla)] shadow-[0_25px_80px_rgba(12,17,43,0.22)]">
+      <aside className="rounded-[36px] bg-[color:var(--navy)] p-6 text-[color:var(--vanilla)] shadow-[0_25px_80px_rgba(12,17,43,0.22)] md:p-8">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--mint)]">{planner.summaryEyebrow}</p>
         <h3 className="mt-5 text-3xl font-semibold">{planner.summaryTitle}</h3>
         <p className="mt-4 text-sm leading-7 text-white/78">{planner.summaryDescription}</p>
@@ -124,7 +124,7 @@ export function PackageConfigurator({ locale }: PackageConfiguratorProps) {
           <div className="flex justify-between gap-4"><span>{planner.summaryLabels.area}</span><span className="text-right font-semibold">{matchedArea ?? planner.areaFallback}</span></div>
           <div className="flex justify-between gap-4"><span>{planner.summaryLabels.extras}</span><span className="text-right font-semibold">{selectedExtras || planner.extrasFallback}</span></div>
         </div>
-        <a href="#quote-form" className="btn-primary mt-8 px-5 py-3">
+        <a href="#quote-form" className="btn-primary mt-8 w-full px-5 py-3 text-center">
           {planner.cta}
         </a>
       </aside>

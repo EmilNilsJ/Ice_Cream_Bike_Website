@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CookieBanner } from "@/components/cookie-banner";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { getLocale } from "@/lib/locale";
 import { getSiteContent } from "@/lib/site-content";
 
@@ -27,6 +28,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           {children}
           <SiteFooter navigation={content.navigation} brand={content.brand} footer={content.footer} />
           {!cookieConsent ? <CookieBanner content={content.cookie} /> : null}
+          <ScrollToTop />
         </div>
       </body>
     </html>

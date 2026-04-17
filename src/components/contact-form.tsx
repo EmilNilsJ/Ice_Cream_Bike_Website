@@ -51,7 +51,7 @@ export function ContactForm({ locale }: ContactFormProps) {
   }
 
   return (
-    <form action={handleSubmit} className="mt-12 grid gap-4 rounded-[36px] bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2">
+    <form action={handleSubmit} className="mt-12 grid gap-4 rounded-[36px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2 md:p-8">
       {(["name", "email", "phone", "company"] as const).map((field) => (
         <label key={field} className="grid gap-2">
           <span className="text-sm font-semibold text-[color:var(--navy)]">{content.fields[field]}</span>

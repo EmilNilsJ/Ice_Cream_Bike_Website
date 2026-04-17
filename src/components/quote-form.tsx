@@ -59,7 +59,7 @@ export function QuoteForm({ locale }: QuoteFormProps) {
   }
 
   return (
-    <form action={handleSubmit} className="grid gap-4 rounded-[36px] bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2">
+    <form action={handleSubmit} className="grid gap-4 rounded-[36px] bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:grid-cols-2 md:p-8">
       <label className="grid gap-2">
         <span className="text-sm font-semibold text-[color:var(--navy)]">{content.quoteForm.customerType}</span>
         <select name="customerType" className="rounded-2xl border border-[color:var(--line)] px-4 py-3 outline-none">
@@ -97,7 +97,7 @@ export function QuoteForm({ locale }: QuoteFormProps) {
       </label>
       <fieldset className="grid gap-3 md:col-span-2">
         <legend className="text-sm font-semibold text-[color:var(--navy)]">{content.quoteForm.addOns}</legend>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
           {content.addOns.map((item) => (
             <label key={item.id} className="rounded-[24px] border border-[color:var(--line)] p-4">
               <input type="checkbox" name="addOnIds" value={item.id} className="mr-3" />
