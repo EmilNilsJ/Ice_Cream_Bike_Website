@@ -26,7 +26,7 @@ const siteContent = {
       dutch: "NL",
       english: "EN",
       contactCta: "Neem contact op",
-      bookingCta: "Beschikbaarheid aanvragen"
+      bookingCta: "Aanvragen"
     },
     hero: {
       eyebrow: "The Ice Cream Bike",
@@ -39,7 +39,7 @@ const siteContent = {
       featuredTitle: "Klassieke uitstraling, warme service en een setup die gasten meteen onthouden.",
       metrics: [
         { label: "Evenementen verzorgd", value: "450+" },
-        { label: "Werkgebied", value: "Skane en omgeving Kopenhagen" },
+        { label: "Werkgebied", value: "Noord-Brabant" },
         { label: "Reactietijd", value: "Binnen 1 werkdag" }
       ]
     },
@@ -376,7 +376,7 @@ const siteContent = {
       information: "Informatie",
       description:
         "Boekbare ijsbelevingen vanuit een klassieke fiets voor bedrijfsfeesten, familievieringen, lanceringen en winteredities.",
-      serviceArea: "Actief in Malmo, Lund, Helsingborg en geselecteerde events in Kopenhagen."
+      serviceArea: "Actief in Noord-Brabant: Eindhoven, 's-Hertogenbosch, Tilburg, Breda en omgeving."
     },
     cookie: {
       message:
@@ -423,7 +423,7 @@ const siteContent = {
       featuredTitle: "Classic styling, warm service, and a setup guests remember right away.",
       metrics: [
         { label: "Events served", value: "450+" },
-        { label: "Coverage", value: "Skane and Greater Copenhagen" },
+        { label: "Coverage", value: "Noord-Brabant" },
         { label: "Reply speed", value: "Within 1 business day" }
       ]
     },
@@ -760,7 +760,7 @@ const siteContent = {
       information: "Information",
       description:
         "Bookable ice cream experiences from a classic bike for company events, family celebrations, launches, and winter editions.",
-      serviceArea: "Serving Malmo, Lund, Helsingborg, and selected events in Copenhagen."
+      serviceArea: "Serving Noord-Brabant: Eindhoven, 's-Hertogenbosch, Tilburg, Breda, and surrounding areas."
     },
     cookie: {
       message:

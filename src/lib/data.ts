@@ -40,7 +40,7 @@ export const navigation = [
 
 export const heroMetrics = [
   { label: "Events served", value: "450+" },
-  { label: "Regional coverage", value: "Skane to Greater Copenhagen" },
+  { label: "Regional coverage", value: "Noord-Brabant" },
   { label: "Reply speed", value: "Within 1 business day" }
 ];
 
@@ -134,10 +134,12 @@ export const testimonials = [
 ];
 
 export const serviceAreas = [
-  { name: "Malmo", postalPrefixes: ["20", "21", "22"], travelFee: 0 },
-  { name: "Lund", postalPrefixes: ["22", "24"], travelFee: 350 },
-  { name: "Helsingborg", postalPrefixes: ["25", "26"], travelFee: 700 },
-  { name: "Copenhagen Events", postalPrefixes: ["10", "11", "12"], travelFee: 1200 }
+  { name: "Eindhoven", postalPrefixes: ["55", "56", "57", "58"], travelFee: 0 },
+  { name: "'s-Hertogenbosch", postalPrefixes: ["52", "53"], travelFee: 0 },
+  { name: "Tilburg", postalPrefixes: ["50", "51"], travelFee: 0 },
+  { name: "Breda", postalPrefixes: ["48", "49"], travelFee: 0 },
+  { name: "West-Brabant", postalPrefixes: ["46", "47"], travelFee: 0 },
+  { name: "Surrounding region", postalPrefixes: ["40", "41", "42", "43", "44", "45", "54", "59", "60"], travelFee: 0 }
 ];
 
 export const faqs = [

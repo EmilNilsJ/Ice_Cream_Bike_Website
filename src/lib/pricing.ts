@@ -10,7 +10,7 @@ export type QuoteInput = {
 
 export function calculateTravelFee(postalCode: string) {
   const prefix = postalCode.slice(0, 2);
-  return serviceAreas.find((area) => area.postalPrefixes.includes(prefix))?.travelFee ?? 1600;
+  return serviceAreas.find((area) => area.postalPrefixes.includes(prefix))?.travelFee ?? 0;
 }
 
 export function calculateQuote(input: QuoteInput) {
